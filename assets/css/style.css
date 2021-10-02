@@ -1,0 +1,12 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-image: linear-gradient(to right, rgb(132, 100, 201) , rgb(44, 27, 121));
+    text-align: center;
+    font-size: 40px;
+    padding: 15px 0px;
+}
