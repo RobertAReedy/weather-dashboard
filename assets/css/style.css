@@ -2,11 +2,92 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: Helvetica, Arial, sans-serif;
 }
+
+h1 {color: white}
+h2 {font-weight: 700}
 
 #header {
     background-image: linear-gradient(to right, rgb(132, 100, 201) , rgb(44, 27, 121));
     text-align: center;
     font-size: 40px;
     padding: 15px 0px;
+    margin-bottom: 10px;
+}
+
+#main {
+    margin: 0px;
+}
+
+main #city-search-container {
+    border-bottom: 2px gray solid;
+}
+
+#city-search-container input {
+    font-size: larger;
+    padding: 5px 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+main button {
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 8px 0;
+    border: 0;
+}
+
+main #city-search-button {
+    background-color: rgb(80, 152, 230);
+    color: rgba(255, 255, 255, 0.897);
+    margin: 17px 0;
+}
+
+main .city-history-button {
+    background-color: rgb(174, 174, 174);  
+    margin-top: 17px;
+}
+
+main #weather-display-row {
+    border: black 1px solid;
+    padding: 3px;
+}
+
+main #weather-display-row p, #weather-display-row h2{
+    margin-bottom: 20px;
+}
+
+main #weather-display-row p span {
+    margin-bottom: 20px;
+    background-color: rgb(21, 115, 71);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: smaller;
+}
+
+main .forecast-box {
+    background-color: rgb(45, 62, 80);
+    color: white;
+    margin-right: 10px;
+    border: black 1px solid;
+    padding: 3px;
+}
+
+main .forecast-box p {
+    margin-bottom: 15px;
+}
+
+main h3 {
+    margin: 15px 0 5px 0;
+    font-weight: bolder;
+}
+
+main .forecast-box h3 {
+    margin: 0px 0 5px 0;
+    color: white;
+    font-size: medium;
 }
