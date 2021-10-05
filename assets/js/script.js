@@ -16,6 +16,19 @@ function setHistoryButtons() {
  */
 var getWeather = function(cityName) {
     console.log("getWeather activated; value: " + cityName);
+    var apiUrl = "api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey;
+
+    fetch(apiUrl);
+    // .then(function(response) {
+    //     if (response.ok) {
+    //         response.json().then(function(data) {
+    //             console.log(data);
+    //         });
+    //     }
+    //     else {
+    //         console.log("fetch failed");
+    //     }
+    // });
 }
 
 /**
@@ -48,6 +61,8 @@ function updateSearchHistory() {
 }
 
 $("#city-search-button").click(function() {
+    $("#city-search-input").val("Richmond");
+
     getWeather($("#city-search-input").val());
     setCurrentWeather();
     setForecast();
