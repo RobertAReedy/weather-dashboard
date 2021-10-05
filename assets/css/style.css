@@ -95,3 +95,7 @@ main .forecast-box h3 {
     color: white;
     font-size: medium;
 }
+
+.hide {
+    display: none;
+}
