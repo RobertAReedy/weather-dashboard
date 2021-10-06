@@ -22,24 +22,45 @@ function setHistoryButtons() {
  * called weatherInfo
  */
 var getCurrentWeather = function(cityName) {
-    console.log("getWeather activated; value: " + cityName);
-    var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + apiKey + "&units=imperial";
+    console.log("getWeather activated; city name: " + cityName);
+    var apiUrl = "";
+    var coordinates = [-999, -999];
+    var geoApiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + apiKey;
 
-    fetch(apiUrl)
+    fetch(geoApiUrl)
     .then(function(response) {
         if (response.ok) {
             response.json().then(function(data) {
-                console.log("Temp in fahrenheit: " + data.main.temp);
-                weatherInfo = data;
+                coordinates[0] = (data[0].lat);
+                coordinates[1] = (data[0].lon);
+                console.log(coordinates);
 
-                setCurrentWeather(); //begin next function in chain
-                updateSearchHistory();
+                apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+                coordinates[0] +  "&lon=" + coordinates[1] + "&exclude=current,minutely,hourly&appid=" + 
+                apiKey + "&units=imperial";
+
+                fetch(apiUrl)
+                .then(function(response) {
+                    if (response.ok) {
+                        response.json().then(function(data) {
+                            weatherInfo = data;
+                            setCurrentWeather(); //begin next function in chain
+                            setForecast();
+                            updateSearchHistory(); //update the search history buttons
+                        });
+                    }
+                    else {
+                        console.log("weather data fetch failed");
+                    }
+                });
             });
         }
         else {
-            console.log("fetch failed");
+            console.log("coordinate fetch failed");
         }
     });
+
+    
 }
 
 /**
@@ -55,10 +76,10 @@ function getWeatherImage(weather) {
 function setCurrentWeather() {
     console.log("setCurrentWeather activated");
     $("#current-weather-title").text($("#city-search-input").val());
-    $("#current-weather-temp").text("Temp: " + weatherInfo.main.temp);
-    $("#current-weather-wind").text("Wind: " + weatherInfo.wind.speed + " mph");
-    $("#current-weather-humidity").text("Humidity: " + weatherInfo.main.humidity + " %");
-    $("#current-weather-uv").text("dunno man");
+    $("#current-weather-temp").text("Temp: " + weatherInfo.daily[0].temp.day);
+    $("#current-weather-wind").text("Wind: " + weatherInfo.daily[0].wind_speed + " mph");
+    $("#current-weather-humidity").text("Humidity: " + weatherInfo.daily[0].humidity + " %");
+    $("#current-weather-uv").text(weatherInfo.daily[0].uvi);
     // getWeatherImage("weather goes here");
 }
 
@@ -67,6 +88,9 @@ function setCurrentWeather() {
  */
 function setForecast() {
     console.log("setForecast activated");
+    for (var i = 1; i <= 1; i++) {
+        $("#day-"+i+"-temp").text("Temp: " + weatherInfo.daily[0].temp.day);
+    }
 }
 
 /**
@@ -95,7 +119,6 @@ setHistoryButtons();
 
 $("#city-search-button").click(function() {
     // $("#city-search-input").val("Richmond");
-
     getCurrentWeather($("#city-search-input").val())
 });
 
