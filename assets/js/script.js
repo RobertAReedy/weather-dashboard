@@ -88,8 +88,10 @@ function setCurrentWeather() {
  */
 function setForecast() {
     console.log("setForecast activated");
-    for (var i = 1; i <= 1; i++) {
-        $("#day-"+i+"-temp").text("Temp: " + weatherInfo.daily[0].temp.day);
+    for (var i = 1; i <= 5; i++) {
+        $("#day-"+i+"-temp").text("Temp: " + weatherInfo.daily[i-1].temp.day);
+        $("#day-"+i+"-wind").text("Temp: " + weatherInfo.daily[i-1].wind_speed + " mph");
+        $("#day-"+i+"-humidity").text("Temp: " + weatherInfo.daily[i-1].humidity + " %");
     }
 }
 
