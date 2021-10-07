@@ -87,7 +87,7 @@ function getWeatherImage(weather) {
  */
 function setCurrentWeather() {
     console.log("setCurrentWeather activated");
-    $("#current-weather-title").text($("#city-search-input").val());
+    $("#current-weather-title").text($("#city-search-input").val() + " (" + moment().format("l") + ")");
     $("#current-weather-image").attr("src", 
         "https://openweathermap.org/img/wn/" + weatherInfo.daily[0].weather[0].icon + ".png");
     $("#current-weather-temp").text("Temp: " + weatherInfo.daily[0].temp.day + "°F");
