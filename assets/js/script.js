@@ -2,6 +2,12 @@ var weatherInfo;
 var apiKey = "f8e665afb7df296fa3ac06027ab4d95d";
 var historyButtons = [];
 
+function setDates() {
+    for (var i = 1; i <= 5; i++) {
+        $("#day-"+i+"-title").text(moment().add((i-1), 'd').format("l"));
+    }
+}
+
 /**
  * Creates and appends the history buttons that will eventually display
  * weather search history. Will at first make them invisible, so they can
@@ -82,7 +88,9 @@ function getWeatherImage(weather) {
 function setCurrentWeather() {
     console.log("setCurrentWeather activated");
     $("#current-weather-title").text($("#city-search-input").val());
-    $("#current-weather-temp").text("Temp: " + weatherInfo.daily[0].temp.day);
+    $("#current-weather-image").attr("src", 
+        "https://openweathermap.org/img/wn/" + weatherInfo.daily[0].weather[0].icon + ".png");
+    $("#current-weather-temp").text("Temp: " + weatherInfo.daily[0].temp.day + "°F");
     $("#current-weather-wind").text("Wind: " + weatherInfo.daily[0].wind_speed + " mph");
     $("#current-weather-humidity").text("Humidity: " + weatherInfo.daily[0].humidity + " %");
     $("#current-weather-uv").text(weatherInfo.daily[0].uvi);
@@ -95,9 +103,12 @@ function setCurrentWeather() {
 function setForecast() {
     console.log("setForecast activated");
     for (var i = 1; i <= 5; i++) {
-        $("#day-"+i+"-temp").text("Temp: " + weatherInfo.daily[i-1].temp.day);
-        $("#day-"+i+"-wind").text("Temp: " + weatherInfo.daily[i-1].wind_speed + " mph");
-        $("#day-"+i+"-humidity").text("Temp: " + weatherInfo.daily[i-1].humidity + " %");
+        $("#day-"+i+"-title").text(moment().add((i-1), 'd').format("l"));
+        $("#day-"+i+"-image").attr("src", 
+        "https://openweathermap.org/img/wn/" + weatherInfo.daily[i-1].weather[0].icon + ".png");
+        $("#day-"+i+"-temp").text("Temp: " + weatherInfo.daily[i-1].temp.day + "°F");
+        $("#day-"+i+"-wind").text("Wind: " + weatherInfo.daily[i-1].wind_speed + " mph");
+        $("#day-"+i+"-humidity").text("Humidity: " + weatherInfo.daily[i-1].humidity + " %");
     }
 }
 
@@ -135,6 +146,7 @@ function updateLocalStorage() {
 }
 
 setHistoryButtons();
+setDates();
 
 $("#city-search-button").click(function() {
     // $("#city-search-input").val("Richmond");

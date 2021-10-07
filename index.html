@@ -28,46 +28,48 @@
         </div>
         <div id="right-column" class="col-9">
             <div id="weather-display-row">
-                <h2 id="current-weather-title">City name and date will go here <img src="./assets/images/jokerCutin.png"/></h2>
-                <p id="current-weather-temp">Temp: 420</p>
-                <p id="current-weather-wind">Wind: 420</p>
-                <p id="current-weather-humidity">Humidity: 420</p>
-                <p>UV Index: <span id="current-weather-uv">420</span> </p>
+                <h2 id="current-weather-title" style="display:inline-block;">
+                    Search for a city! </h2>
+                <img id="current-weather-image"/>
+                <p id="current-weather-temp">Temp: </p>
+                <p id="current-weather-wind">Wind: </p>
+                <p id="current-weather-humidity">Humidity: </p>
+                <p>UV Index: <span id="current-weather-uv"></span> </p>
             </div>
             <h3>5-Day Forecast:</h3>
             <div id="forecast-row" class="row mx-0">
                 <!-- another bootstrap table here; just 5 columns -->
                 <div id="forecast-day-1" class="forecast-box col-2 mr-auto">
                     <h3 id="day-1-title">Date Goes Here</h3>
-                    <img src="./assets/images/jokerCutin.png"/>
+                    <img id="day-1-image"/>
                     <p id="day-1-temp">Temp:</p>
                     <p id="day-1-wind">Wind:</p>
                     <p id="day-1-humidity">Humidity:</p>
                 </div>
                 <div id="forecast-day-2" class="forecast-box col-2 mx-auto">
                     <h3 id="day-2-title">Date Goes Here</h3>
-                    <img src="./assets/images/jokerCutin.png"/>
+                    <img id="day-2-image"/>
                     <p id="day-2-temp">Temp:</p>
                     <p id="day-2-wind">Wind:</p>
                     <p id="day-2-humidity">Humidity:</p>
                 </div>
                 <div id="forecast-day-3" class="forecast-box col-2 mx-auto">
                     <h3 id="day-3-title">Date Goes Here</h3>
-                    <img src="./assets/images/jokerCutin.png"/>
+                    <img id="day-3-image"/>
                     <p id="day-3-temp">Temp:</p>
                     <p id="day-3-wind">Wind:</p>
                     <p id="day-3-humidity">Humidity:</p>
                 </div>
                 <div id="forecast-day-4" class="forecast-box col-2 mx-auto">
                     <h3 id="day-4-title">Date Goes Here</h3>
-                    <img src="./assets/images/jokerCutin.png"/>
+                    <img id="day-4-image"/>
                     <p id="day-4-temp">Temp:</p>
                     <p id="day-4-wind">Wind:</p>
                     <p id="day-4-humidity">Humidity:</p>
                 </div>
                 <div id="forecast-day-5" class="forecast-box col-2 mx-auto">
                     <h3 id="day-5-title">Date Goes Here</h3>
-                    <img src="./assets/images/jokerCutin.png"/>
+                    <img id="day-5-image"/>
                     <p id="day-5-temp">Temp:</p>
                     <p id="day-5-wind">Wind:</p>
                     <p id="day-5-humidity">Humidity:</p>
@@ -76,6 +78,7 @@
         </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
