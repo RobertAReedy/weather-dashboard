@@ -8,10 +8,16 @@ var historyButtons = [];
  * later be made visible when there's information to put in them.
  */
 function setHistoryButtons() {
-    console.log("setHistoryButtons called");
+    var historyValues = JSON.parse(localStorage.getItem("history"));
+    console.log(historyValues);
+    
     for (var i = 0; i < 7; i++) {
         buttonEl = document.createElement("button");
         buttonEl.className = "city-history-button hide";
+        if (historyValues && historyValues[i] != "") {
+            buttonEl.textContent = historyValues[i];
+            buttonEl.className = "city-history-button";
+        }
         historyButtons.push(buttonEl);
         $("#city-search-history-container").append(buttonEl);
     }
@@ -115,6 +121,17 @@ function updateSearchHistory() {
     }
     historyButtons[0].setAttribute("class", "city-history-button");
     historyButtons[0].textContent = $("#city-search-input").val();
+
+    updateLocalStorage();
+}
+
+function updateLocalStorage() {
+    var historyValues = [];
+    for (var i = 0; i < historyButtons.length; i++) {
+        historyValues.push(historyButtons[i].textContent);
+    }
+    console.log(historyValues);
+    localStorage.setItem("history", JSON.stringify(historyValues));  
 }
 
 setHistoryButtons();
