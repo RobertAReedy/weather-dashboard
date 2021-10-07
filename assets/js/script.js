@@ -37,7 +37,7 @@ var getCurrentWeather = function(cityName) {
     console.log("getWeather activated; city name: " + cityName);
     var apiUrl = "";
     var coordinates = [-999, -999];
-    var geoApiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + apiKey;
+    var geoApiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=" + apiKey;
 
     fetch(geoApiUrl)
     .then(function(response) {
