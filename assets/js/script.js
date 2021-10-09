@@ -15,7 +15,6 @@ function setDates() {
  */
 function setHistoryButtons() {
     var historyValues = JSON.parse(localStorage.getItem("history"));
-    console.log(historyValues);
     
     for (var i = 0; i < 7; i++) {
         buttonEl = document.createElement("button");
@@ -45,7 +44,6 @@ var getCurrentWeather = function(cityName) {
             response.json().then(function(data) {
                 coordinates[0] = (data[0].lat);
                 coordinates[1] = (data[0].lon);
-                console.log(coordinates);
 
                 apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" +
                 coordinates[0] +  "&lon=" + coordinates[1] + "&exclude=current,minutely,hourly&appid=" + 
@@ -87,7 +85,6 @@ function setCurrentWeather() {
     $("#current-weather-wind").text("Wind: " + weatherInfo.daily[0].wind_speed + " mph");
     $("#current-weather-humidity").text("Humidity: " + weatherInfo.daily[0].humidity + " %");
     $("#current-weather-uv").text(weatherInfo.daily[0].uvi);
-    // getWeatherImage("weather goes here");
 }
 
 /**
@@ -113,7 +110,6 @@ function updateSearchHistory() {
     console.log("updateSearchHistory activated");
     for (var i = 0; i < historyButtons.length; i++) {
         if (historyButtons[i].textContent === $("#city-search-input").val()) {
-            console.log("repeat; loop ended");
             return;
         }
     }
@@ -134,7 +130,6 @@ function updateLocalStorage() {
     for (var i = 0; i < historyButtons.length; i++) {
         historyValues.push(historyButtons[i].textContent);
     }
-    console.log(historyValues);
     localStorage.setItem("history", JSON.stringify(historyValues));  
 }
 
@@ -142,7 +137,6 @@ setHistoryButtons();
 setDates();
 
 $("#city-search-button").click(function() {
-    // $("#city-search-input").val("Richmond");
     getCurrentWeather($("#city-search-input").val())
 });
 
