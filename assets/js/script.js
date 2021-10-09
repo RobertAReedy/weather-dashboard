@@ -76,13 +76,6 @@ var getCurrentWeather = function(cityName) {
 }
 
 /**
- * Will... somehow... return the correct weather image. 
- */
-function getWeatherImage(weather) {
-    console.log("getWeatherImage activated");
-}
-
-/**
  * Sets the weather in the current day display row.
  */
 function setCurrentWeather() {
